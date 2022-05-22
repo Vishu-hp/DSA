@@ -55,15 +55,15 @@ void display(Node *node) {
     if(node==NULL){
         return NULL;
     }
-    Node* ans=node;
+    // Node* ans=node;
     Node* leftAns = createLeftCloneTree(node->left);
     Node* rightAns = createLeftCloneTree(node->right);
 
-    ans->right = rightAns;
+    node->right = rightAns;
     Node* clone = new Node(node->data,NULL,NULL);
-    ans->left=clone;
-    ans->left->left = leftAns;
-    return ans;
+    node->left=clone;
+    node->left->left = leftAns;
+    return node;
   }
 
   
