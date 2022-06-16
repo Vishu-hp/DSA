@@ -23,25 +23,25 @@ void solve(vector<vector<int>>&dp,int n,int m){
         Pair rem=q.front();
         q.pop();
 
-        int x=rem.i,y=rem.j;
-        if(x==n-1 && y==m-1){
+        int y=rem.i,x=rem.j;
+        if(x==m-1 && y==n-1){
             cout<<rem.psf<<endl;
         }
-        else if(x==n-1){
-            q.push(Pair(dp[x][y+1],x,y+1,rem.psf+"H"));
+        else if(y==n-1){
+            q.push(Pair(dp[y][x+1],y,x+1,rem.psf+"H"));
         }
-        else if(y==m-1){
-            q.push(Pair(dp[x+1][y],x+1,y,rem.psf+"V"));
+        else if(x==m-1){
+            q.push(Pair(dp[y+1][x],y+1,x,rem.psf+"V"));
         }
-        else if(dp[x][y+1]<dp[x+1][y]){
-            q.push(Pair(dp[x][y+1],x,y+1,rem.psf+"H"));
+        else if(dp[y][x+1]<dp[y+1][x]){
+            q.push(Pair(dp[y][y+1],y,x+1,rem.psf+"H"));
         }
-        else if(dp[x+1][y]<dp[x][y+1]){
-            q.push(Pair(dp[x+1][y],x+1,y,rem.psf+"V"));
+        else if(dp[y+1][x]<dp[y][x+1]){
+            q.push(Pair(dp[y+1][x],y+1,x,rem.psf+"V"));
         }
         else{
-            q.push(Pair(dp[x+1][y],x+1,y,rem.psf+"V"));
-            q.push(Pair(dp[x][y+1],x,y+1,rem.psf+"H"));
+            q.push(Pair(dp[y+1][x],y+1,x,rem.psf+"V"));
+            q.push(Pair(dp[y][x+1],y,x+1,rem.psf+"H"));
         }
     }
     return;
