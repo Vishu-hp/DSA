@@ -12,11 +12,11 @@ int main(){
     int currSum=arr[0];
     int bestSum=arr[0];
     for(int i=1;i<n;i++){
-        if(currSum<0){
-            currSum = arr[i];
+        if(currSum+arr[i] >arr[i]){
+            currSum = currSum+arr[i];
         }
         else{
-            currSum += arr[i];
+            currSum = arr[i];
         }
 
         if(currSum>bestSum){
